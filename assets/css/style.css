@@ -1,0 +1,58 @@
+:root{
+    --darkviolet: rgb(68, 13, 90);
+    --white: rgba(255, 255, 255, 0.919);
+    --heliotrope: rgb(235, 35, 241);
+}
+
+html{
+    font-size: 62.5%;
+}
+
+
+body{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+header{
+    font-size: 1.5rem;
+    padding: 1rem;
+    margin: 0.5rem;
+}
+
+header a{
+    color: var(--heliotrope);
+    text-decoration: none;
+}
+
+header a:hover{
+    color: var(--darkviolet);
+}
+
+h1{
+    font-size: 5rem;
+}
+
+.question-section{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.questions {
+    /* font-weight: bold; */
+    font-size: 2rem;
+}
+
+button {
+    background-color: var(--darkviolet);
+    color: var(--white);
+    border-radius: 12px;
+    padding: 0.5rem 2.5rem;
+    font-size: 2rem;
+
+}
+
+button:hover {
+    background-color: var(--heliotrope);
+}
