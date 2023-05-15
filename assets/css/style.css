@@ -56,7 +56,6 @@ h1{
 .questions {
     font-size: 3rem;
     font-weight: bold;
-    
 }
 
 .start-button {
@@ -75,10 +74,15 @@ h1{
     font-size: 2rem;
     margin: 1rem;
     align-self: flex-start;
-    width: 11em;
+    width: 13em;
     text-align: left;
 }
 
 button:hover {
     background-color: var(--heliotrope);
+}
+
+.end-heading {
+    font-size: 3rem;
+    font-weight: bold;
 }
