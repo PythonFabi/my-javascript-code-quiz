@@ -78,6 +78,8 @@ h1{
     text-align: left;
 }
 
+
+
 button:hover {
     background-color: var(--heliotrope);
 }
@@ -86,3 +88,4 @@ button:hover {
     font-size: 3rem;
     font-weight: bold;
 }
+
