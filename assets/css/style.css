@@ -19,6 +19,12 @@ header{
     margin: 0.5rem;
 }
 
+
+.header{
+    display: flex;
+    justify-content: space-between;
+}
+
 header a{
     color: var(--heliotrope);
     text-decoration: none;
@@ -28,29 +34,49 @@ header a:hover{
     color: var(--darkviolet);
 }
 
+
 h1{
-    font-size: 5rem;
+    font-size: 3rem;
 }
 
 .question-section{
     text-align: center;
     display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
     align-items: center;
+    margin: 1rem;
 }
 
-.questions {
+.quiz-description {
     /* font-weight: bold; */
     font-size: 2rem;
 }
 
-button {
+.questions {
+    font-size: 3rem;
+    font-weight: bold;
+    
+}
+
+.start-button {
     background-color: var(--darkviolet);
     color: var(--white);
     border-radius: 12px;
     padding: 0.5rem 2.5rem;
     font-size: 2rem;
+}
 
+.question-buttons {
+    background-color: var(--darkviolet);
+    color: var(--white);
+    border-radius: 12px;
+    padding: 0.5rem 2.5rem;
+    font-size: 2rem;
+    margin: 1rem;
+    align-self: flex-start;
+    width: 11em;
+    text-align: left;
 }
 
 button:hover {
