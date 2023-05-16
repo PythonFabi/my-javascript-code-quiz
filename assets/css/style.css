@@ -56,7 +56,6 @@ h1{
 .questions {
     font-size: 3rem;
     font-weight: bold;
-    
 }
 
 .start-button {
@@ -75,10 +74,30 @@ h1{
     font-size: 2rem;
     margin: 1rem;
     align-self: flex-start;
-    width: 11em;
+    width: 13em;
     text-align: left;
 }
+
+.submit-button {
+    background-color: var(--darkviolet);
+    color: var(--white);
+    border-radius: 12px;
+    padding: 0.5rem 2.5rem;
+    margin-left: 1rem;
+    font-size: 2rem;
+}
+
+.ending {
+    font-size: 2rem;
+}
+
 
 button:hover {
     background-color: var(--heliotrope);
 }
+
+.end-heading {
+    font-size: 3rem;
+    font-weight: bold;
+}
+
