@@ -6,9 +6,12 @@ var firstQuestionAnswers = ['1. strings', '2. booleans', '3. alerts', '4. number
 var secondQuestionAnswers = ['1. quotes', '2. curly brackets', '3. parenthesis', '4. square brackets'];
 var thirdQuestionAnswers = ['1. numbers and strings', '2. other arrays', '3. booleans', '4.all of the above'];
 var fourthQuestionAnswers = ['1. commas', '2. curly brackets', '3. quotes', '4.parenthesis'];
-var lastQuestionAnswers = ['1. JavaScript', '2. terminal/bash', '3. for loops', '4. console.log']
+var lastQuestionAnswers = ['1. JavaScript', '2. terminal/bash', '3. for loops', '4. console.log'];
+var highScoreList = document.querySelector("#high-scores");
 var timer;
 var timerCount;
+var answerResult;
+var highScores = [];
 
 // When I click the start button, then a timer starts and I am presented with a question
 /* If (start button is clicked) {
@@ -50,8 +53,21 @@ var timerCount;
             answers.setAttribute("class", "question-buttons");
 
             // listens for click on buttons two go to the second question
-            answers.addEventListener('click', function (){
-                secondQuestion();
+            answers.addEventListener('click', function (event){
+
+                //you can compare the answer from the one you clickled
+                //through the event you can find the clicked answer and compare it with the correct one
+                //if its correct add time
+                //if its incorecctt decrease time
+               
+                if (this.textContent === firstQuestionAnswers[3]) {
+                    answerResult = "Correct!"
+                    secondQuestion(answerResult);
+                } else {
+                    answerResult = "Wrong!"
+                    secondQuestion(answerResult);
+                };
+                
             });
 
             questionSection.appendChild(answers);
@@ -62,12 +78,14 @@ var timerCount;
 
 
 // same process as in the first question
-    function secondQuestion(){
+    function secondQuestion(answerResult){
         questionSection.innerHTML = "";
         var secondQuestion = document.createElement("p");
         secondQuestion.textContent = "The condition in an if/else statement is enclosed with________."
         secondQuestion.setAttribute("class", "questions");
         questionSection.appendChild(secondQuestion);
+
+
 
         for (let i = 0; i < secondQuestionAnswers.length; i++) {
             var answers = document.createElement("button");
@@ -125,7 +143,7 @@ var timerCount;
         };
     };
 
-
+// last question executes the gameOver function
     function lastQuestion(){
         questionSection.innerHTML = "";
         var lastQuestion = document.createElement("p");
@@ -147,13 +165,61 @@ var timerCount;
     };
 
     function gameOver(){
+        // timer stops, once all questions are answered
+        clearInterval(timer);
+        // save timerCount as final savedScore and parse it
+        localStorage.setItem("timerCount", JSON.stringify(timerCount));
+        var savedScore = JSON.parse(localStorage.getItem("timerCount"));
+        // clears question section
         questionSection.innerHTML = "";
-        var allDone = document.createElement("h2")
-        var saveHighScore = document.createElement("form")
+        // create new header
+        var allDone = document.createElement("h2");
         allDone.textContent = "All done!"
-        allDone.setAttribute("class", "end-heading");
+        allDone.setAttribute("class", "ending");
         questionSection.appendChild(allDone);
+
+        // score is created with final savedScore, which was parsed from the local storage
+        var finalScore = document.createElement("p");
+        finalScore.textContent = "Your final score is " + savedScore;
+        finalScore.setAttribute("class", "ending")
+        questionSection.appendChild(finalScore);
         
+        
+        var finalForm = document.createElement("form");
+        questionSection.appendChild(finalForm);
+
+        var initialLabel = document.createElement("label");
+        initialLabel.textContent = "Enter initials: ";
+        initialLabel.setAttribute("for", "initials");
+        initialLabel.setAttribute("class", "ending");
+        finalForm.appendChild(initialLabel);
+
+        var userInput = document.createElement("input");
+        userInput.setAttribute("type","text");
+        userInput.setAttribute("id", "initials");
+        finalForm.appendChild(userInput);
+
+        var submitButton = document.createElement("button");
+        submitButton.textContent = "Submit";
+        submitButton.setAttribute("class", "submit-button");
+        finalForm.appendChild(submitButton);
+
+    };
+
+
+    function renderHighScores(){
+        scoreList.innerHTML = "";
+
+        for (let i = 0; i < highScores.length; i++) {
+            var highScore = highScores[i];
+
+            var li = document.createElement("li");
+            li.textContent = highScore;
+            li.setAttribute("data-index", i);
+            highScoreList.appendChild(li);
+
+            
+        }
 
     }
 

@@ -78,6 +78,18 @@ h1{
     text-align: left;
 }
 
+.submit-button {
+    background-color: var(--darkviolet);
+    color: var(--white);
+    border-radius: 12px;
+    padding: 0.5rem 2.5rem;
+    margin-left: 1rem;
+    font-size: 2rem;
+}
+
+.ending {
+    font-size: 2rem;
+}
 
 
 button:hover {
