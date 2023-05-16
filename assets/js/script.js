@@ -59,14 +59,15 @@ var highScores = [];
                 //through the event you can find the clicked answer and compare it with the correct one
                 //if its correct add time
                 //if its incorecctt decrease time
-               
-                if (this.textContent === firstQuestionAnswers[3]) {
-                    answerResult = "Correct!"
-                    secondQuestion(answerResult);
-                } else {
-                    answerResult = "Wrong!"
-                    secondQuestion(answerResult);
-                };
+            if(event.target === firstQuestionAnswers[2].textContent) {
+                answerResult = "Correct!"
+                secondQuestion();
+            } else {
+                answerResult = "Wrong!"
+                timerCount = timerCount - 10;
+                secondQuestion();
+            };
+             
                 
             });
 
@@ -78,7 +79,7 @@ var highScores = [];
 
 
 // same process as in the first question
-    function secondQuestion(answerResult){
+    function secondQuestion(){
         questionSection.innerHTML = "";
         var secondQuestion = document.createElement("p");
         secondQuestion.textContent = "The condition in an if/else statement is enclosed with________."
@@ -203,6 +204,7 @@ var highScores = [];
         submitButton.textContent = "Submit";
         submitButton.setAttribute("class", "submit-button");
         finalForm.appendChild(submitButton);
+        
 
     };
 
