@@ -50,7 +50,6 @@ h1{
 }
 
 .quiz-description {
-    /* font-weight: bold; */
     font-size: 2rem;
 }
 
@@ -85,6 +84,7 @@ h1{
     align-self: flex-start;
     color: var(--lightGrey);
     border-top: 1px solid var(--lightGrey);
+    padding-right: 10em;
 }
 
 .submit-button {

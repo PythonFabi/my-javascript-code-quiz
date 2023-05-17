@@ -46,7 +46,7 @@ var highScores = [];
         firstQuestion.setAttribute("class", "questions");
         questionSection.appendChild(firstQuestion);
 
-        // loops through the array of firstQuestion answers and creates buttons with the values in the array
+        // loops through the array of firstQuestionAnswers and creates buttons with the values in the array
         for (let i = 0; i < firstQuestionAnswers.length; i++) {
             var answers = document.createElement("button");
             answers.textContent = firstQuestionAnswers[i];
@@ -81,7 +81,7 @@ var highScores = [];
              
                 
             });
-
+            // answer buttons appended in the questionsection
             questionSection.appendChild(answers);
         };
  
@@ -124,10 +124,11 @@ var highScores = [];
 
             questionSection.appendChild(answers);
         };
+        // displays the answerresult inside the quiz
         rightOrWrong();
     };
 
-// same process as in the first question
+// same process as in the second question
     function thirdQuestion(){
         questionSection.innerHTML = "";
         var thirdQuestion = document.createElement("p");
@@ -157,7 +158,7 @@ var highScores = [];
     };
 
 
-    // same process as in the first question
+    // same process as in the second question
     function fourthQuestion(){
         questionSection.innerHTML = "";
         var fourthQuestion = document.createElement("p");
@@ -187,7 +188,7 @@ var highScores = [];
         rightOrWrong();
     };
 
-// last question executes the gameOver function
+// same process as in the second question
     function lastQuestion(){
         questionSection.innerHTML = "";
         var lastQuestion = document.createElement("p");
@@ -244,7 +245,7 @@ var highScores = [];
         finalScore.setAttribute("class", "ending")
         questionSection.appendChild(finalScore);
         
-        
+        // create a form that let's user input initials and submit the form 
         var finalForm = document.createElement("form");
         questionSection.appendChild(finalForm);
 
@@ -264,6 +265,16 @@ var highScores = [];
         submitButton.setAttribute("class", "submit-button");
         finalForm.appendChild(submitButton);
 
+        /*
+      if(input not letters) {
+        print "input not recognized"
+      } else {
+        Go to highscore page, which has initials and highscore saved
+        print "Initials - Score" 
+        Go back and clear high scores button
+      }
+      
+} */
         submitButton.addEventListener("click", function (event) {
             event.preventDefault();
             var initials = userInput.value.trim();
@@ -279,13 +290,14 @@ var highScores = [];
 
     };
 
-
+    // function rightOrWrong prints the answerResult for two seconds
     function rightOrWrong() {
         var checkAnswer = document.createElement("p");
         checkAnswer.textContent = answerResult;
         checkAnswer.setAttribute("class", "answer-result");
         questionSection.appendChild(checkAnswer);
 
+        // removes the answerResult message after two seconds
         var answerDuration = setInterval(function () {
           clearInterval(answerDuration);
           checkAnswer.remove();
@@ -293,22 +305,31 @@ var highScores = [];
 
     };
 
-
+// takes the input from the submit event intials and savedScore as a new parameter score
     function saveHighscore(initials, score) {
+        // highscores are parsed from the localstorage in an array
         var highScores = JSON.parse(localStorage.getItem("highScores")) || [];
 
+        // initals are saved as uppercase letters
         initials = initials.toUpperCase();
 
+        // object to store the values of initials and score in a new score
         var newScore = {
             initials: initials,
             score: score,
         };
+
+        // push the  newScore object inside the highScores object
         highScores.push(newScore);
+        // save highScores in the localStorage
         localStorage.setItem("highScores", JSON.stringify(highScores));
+        // redirects to the highscores.html
         location.href = "./assets/highscores.html";
     };
 
+    // sets allowance for initials
     function initialsTest(initials) {
+        // just allows the letters a-z and just 2 letters, not more --> test for the allowedInitials 
         var allowedInitials = /^[A-Za-z]{2}$/;
         return allowedInitials.test(initials);
     }
@@ -321,7 +342,7 @@ var highScores = [];
 
 
 
-
+// listens for the start button and starts the game
     startButton.addEventListener('click', startGame);
 
 
@@ -331,14 +352,5 @@ var highScores = [];
 
  
 
-/*
-      if(input not letters) {
-        print "input not recognized"
-      } else {
-        Go to highscore page, which has initials and highscore saved
-        print "Initials - Score" 
-        Go back and clear high scores button
-      }
-      
-} */
+
 
