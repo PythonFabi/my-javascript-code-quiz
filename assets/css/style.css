@@ -1,8 +1,8 @@
 :root{
-    --darkviolet: rgb(68, 13, 90);
+    --darkViolet: rgb(68, 13, 90);
     --white: rgba(255, 255, 255, 0.919);
     --heliotrope: rgb(235, 35, 241);
-    --grey: rgba(124, 117, 117, 0.919);
+    --lightGrey: rgba(153, 143, 143, 0.919);
 }
 
 html{
@@ -32,7 +32,7 @@ header a{
 }
 
 header a:hover{
-    color: var(--darkviolet);
+    color: var(--darkViolet);
 }
 
 
@@ -60,7 +60,7 @@ h1{
 }
 
 .start-button {
-    background-color: var(--darkviolet);
+    background-color: var(--darkViolet);
     color: var(--white);
     border-radius: 12px;
     padding: 0.5rem 2.5rem;
@@ -68,7 +68,7 @@ h1{
 }
 
 .question-buttons {
-    background-color: var(--darkviolet);
+    background-color: var(--darkViolet);
     color: var(--white);
     border-radius: 12px;
     padding: 0.5rem 2.5rem;
@@ -83,10 +83,12 @@ h1{
     font-style: italic;
     font-size: 2rem;
     align-self: flex-start;
+    color: var(--lightGrey);
+    border-top: 1px solid var(--lightGrey);
 }
 
 .submit-button {
-    background-color: var(--darkviolet);
+    background-color: var(--darkViolet);
     color: var(--white);
     border-radius: 12px;
     padding: 0.5rem 2.5rem;
@@ -117,5 +119,5 @@ button:hover {
 }
 
 #high-scores {
-    background-color: var(--grey);
+    background-color: var(--lightGrey);
 }
