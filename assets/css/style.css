@@ -1,7 +1,8 @@
 :root{
-    --darkviolet: rgb(68, 13, 90);
+    --darkViolet: rgb(68, 13, 90);
     --white: rgba(255, 255, 255, 0.919);
     --heliotrope: rgb(235, 35, 241);
+    --lightGrey: rgba(153, 143, 143, 0.919);
 }
 
 html{
@@ -31,7 +32,7 @@ header a{
 }
 
 header a:hover{
-    color: var(--darkviolet);
+    color: var(--darkViolet);
 }
 
 
@@ -49,7 +50,6 @@ h1{
 }
 
 .quiz-description {
-    /* font-weight: bold; */
     font-size: 2rem;
 }
 
@@ -59,7 +59,7 @@ h1{
 }
 
 .start-button {
-    background-color: var(--darkviolet);
+    background-color: var(--darkViolet);
     color: var(--white);
     border-radius: 12px;
     padding: 0.5rem 2.5rem;
@@ -67,7 +67,7 @@ h1{
 }
 
 .question-buttons {
-    background-color: var(--darkviolet);
+    background-color: var(--darkViolet);
     color: var(--white);
     border-radius: 12px;
     padding: 0.5rem 2.5rem;
@@ -78,13 +78,23 @@ h1{
     text-align: left;
 }
 
+.answer-result {
+    font-style: italic;
+    font-size: 2rem;
+    align-self: flex-start;
+    color: var(--lightGrey);
+    border-top: 1px solid var(--lightGrey);
+    padding-right: 10em;
+}
+
 .submit-button {
-    background-color: var(--darkviolet);
+    background-color: var(--darkViolet);
     color: var(--white);
     border-radius: 12px;
     padding: 0.5rem 2.5rem;
     margin-left: 1rem;
     font-size: 2rem;
+    margin: 1rem;
 }
 
 .ending {
@@ -101,3 +111,13 @@ button:hover {
     font-weight: bold;
 }
 
+
+.high-score-section{
+   flex-grow:stretch;
+   font-size: 3rem;
+   white-space:none;
+}
+
+#high-scores {
+    background-color: var(--lightGrey);
+}
