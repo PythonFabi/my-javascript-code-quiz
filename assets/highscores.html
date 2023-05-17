@@ -8,10 +8,31 @@
     <title>Highscores</title>
 </head>
 <body>
+    <header>
+        <h1 style="text-align: center;">High scores</h1>
+    </header>
 
-    <ol id="high-scores"></ol>
+    <main>
+        <section class="high-score-section">
+            <ol id="high-scores"></ol>
+            <a  href="../index.html"><button class="start-button">Go back</button></a>
+            <button class="start-button">Clear high scores</button>
+        </section>
+    </main>
+
+    <script>
+        var highScoresList = document.getElementById("high-scores");
+        var highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+
+        highScores.forEach(function (score) {
+            var listItem = document.createElement("li");
+            listItem.setAttribute("class", "")
+            listItem.textContent = score.initials + " - " + score.score;
+            highScoresList.appendChild(listItem);
+        });
+    </script>
     
-<a  href="../index.html"><button class="start-button">Go back</button></a>
+
     <script src="./assets/js/script.js"></script>
 </body>
 </html>

@@ -2,6 +2,7 @@
     --darkviolet: rgb(68, 13, 90);
     --white: rgba(255, 255, 255, 0.919);
     --heliotrope: rgb(235, 35, 241);
+    --grey: rgba(124, 117, 117, 0.919);
 }
 
 html{
@@ -78,6 +79,12 @@ h1{
     text-align: left;
 }
 
+.answer-result {
+    font-style: italic;
+    font-size: 2rem;
+    align-self: flex-start;
+}
+
 .submit-button {
     background-color: var(--darkviolet);
     color: var(--white);
@@ -85,6 +92,7 @@ h1{
     padding: 0.5rem 2.5rem;
     margin-left: 1rem;
     font-size: 2rem;
+    margin: 1rem;
 }
 
 .ending {
@@ -101,3 +109,13 @@ button:hover {
     font-weight: bold;
 }
 
+
+.high-score-section{
+   flex-grow:stretch;
+   font-size: 3rem;
+   white-space:none;
+}
+
+#high-scores {
+    background-color: var(--grey);
+}

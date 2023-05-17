@@ -52,19 +52,30 @@ var highScores = [];
             answers.textContent = firstQuestionAnswers[i];
             answers.setAttribute("class", "question-buttons");
 
+            
+
             // listens for click on buttons two go to the second question
             answers.addEventListener('click', function (event){
-
-                //you can compare the answer from the one you clickled
-                //through the event you can find the clicked answer and compare it with the correct one
-                //if its correct add time
-                //if its incorecctt decrease time
+                
+    /*If question answered {
+    
+    /* If (question incorrect) {
+        timer subtracts 10 seconds from the timer and score
+        and next question
+        print "wrong" under the next question
+    } else { 
+        next question shown
+        print "correct" under the next question
+    }
+    }*/
             if(event.target.textContent === firstQuestionAnswers[2]) {
-                answerResult = "Correct!"
+                answerResult = "Correct!";
                 secondQuestion();
+                
             } else {
-                answerResult = "Wrong!"
-                timerCount = timerCount - 10;
+                answerResult = "Wrong!";
+                // When I answer the question incorrectly then time is subtracted from the clock
+                timerCount -= 10;
                 secondQuestion();
             };
              
@@ -77,6 +88,7 @@ var highScores = [];
     
     };
 
+    // when I answer a question I am presented with another question
 
 // same process as in the first question
     function secondQuestion(){
@@ -88,18 +100,22 @@ var highScores = [];
 
 
 
+
         for (let i = 0; i < secondQuestionAnswers.length; i++) {
             var answers = document.createElement("button");
             answers.textContent = secondQuestionAnswers[i];
             answers.setAttribute("class", "question-buttons");
 
+          
+          
+
             answers.addEventListener('click', function (event){
                 if(event.target.textContent === secondQuestionAnswers[2]) {
-                    answerResult = "Correct!"
+                    answerResult = "Correct!";
                     thirdQuestion();
                 } else {
-                    answerResult = "Wrong!"
-                    timerCount = timerCount - 10;
+                    answerResult = "Wrong!";
+                    timerCount -= 10;
                     thirdQuestion();
                 };
                  
@@ -108,6 +124,7 @@ var highScores = [];
 
             questionSection.appendChild(answers);
         };
+        rightOrWrong();
     };
 
 // same process as in the first question
@@ -125,17 +142,18 @@ var highScores = [];
 
             answers.addEventListener('click', function (event){
                 if(event.target.textContent === thirdQuestionAnswers[3]) {
-                    answerResult = "Correct!"
+                    answerResult = "Correct!";
                     fourthQuestion();
                 } else {
-                    answerResult = "Wrong!"
-                    timerCount = timerCount - 10;
+                    answerResult = "Wrong!";
+                    timerCount -= 10;
                     fourthQuestion();
                 };               
             });
 
             questionSection.appendChild(answers);
         };
+        rightOrWrong();
     };
 
 
@@ -154,11 +172,11 @@ var highScores = [];
 
             answers.addEventListener('click', function (event){
                 if(event.target.textContent === fourthQuestionAnswers[2]) {
-                    answerResult = "Correct!"
+                    answerResult = "Correct!";
                     lastQuestion();
                 } else {
-                    answerResult = "Wrong!"
-                    timerCount = timerCount - 10;
+                    answerResult = "Wrong!";
+                    timerCount -= 10;
                     lastQuestion();
                 };
                 
@@ -166,6 +184,7 @@ var highScores = [];
 
             questionSection.appendChild(answers);
         };
+        rightOrWrong();
     };
 
 // last question executes the gameOver function
@@ -183,18 +202,25 @@ var highScores = [];
 
             answers.addEventListener('click', function (event){
                 if(event.target.textContent === lastQuestionAnswers[3]) {
-                    answerResult = "Correct!"
+                    answerResult = "Correct!";
                     gameOver();
                 } else {
-                    answerResult = "Wrong!"
-                    timerCount = timerCount - 10;
+                    answerResult = "Wrong!";
+                    timerCount -= 10;
+                    if (timerCount < 0) timerCount = 0;
                     gameOver();
                 };
             });
 
             questionSection.appendChild(answers);
         };
+        rightOrWrong();
     };
+
+    // When all questions are answered the timer reaches 0 then the game is over
+/* if (All questions are answered OR Timer reaches 0) {
+    game over then I can save my initials and score 
+    print "your final score is...timeleft" */
 
     function gameOver(){
         // timer stops, once all questions are answered
@@ -237,28 +263,47 @@ var highScores = [];
         submitButton.textContent = "Submit";
         submitButton.setAttribute("class", "submit-button");
         finalForm.appendChild(submitButton);
-          
+
+        submitButton.addEventListener("click", function (event) {
+            event.preventDefault();
+            var initials = userInput.value;
+            saveHighscore(initials, savedScore);
+        });
+
+        rightOrWrong();
+
 
     };
 
+
+    function rightOrWrong() {
+        var checkAnswer = document.createElement("p");
+        checkAnswer.textContent = answerResult;
+        checkAnswer.setAttribute("class", "answer-result");
+        questionSection.appendChild(checkAnswer);
+
+        var answerDuration = setInterval(function () {
+          clearInterval(answerDuration);
+          checkAnswer.remove();
+        }, 2000);
+
+    };
+
+
+    function saveHighscore(initials, score) {
+        var highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+        var newScore = {
+            initials: initials,
+            score: score,
+        };
+        highScores.push(newScore);
+        localStorage.setItem("highScores", JSON.stringify(highScores));
+        location.href = "./assets/highscores.html";
+    };
     
 
 
-    function renderHighScores(){
-        scoreList.innerHTML = "";
-
-        for (let i = 0; i < highScores.length; i++) {
-            var highScore = highScores[i];
-
-            var li = document.createElement("li");
-            li.textContent = highScore;
-            li.setAttribute("data-index", i);
-            highScoreList.appendChild(li);
-
-            
-        }
-
-    }
+    
 
 
 
@@ -267,27 +312,14 @@ var highScores = [];
 
     startButton.addEventListener('click', startGame);
 
-// when I answer a question I am presented with another question
-/*If question answered {
-    // When I answer the question incorrectly then time is subtracted from the clock
-    /* If (question incorrect) {
-        timer subtracts 10 seconds from the timer and score
-        and next question
-        print "wrong" under the next question
-    } else { 
-        next question shown
-        print "correct" under the next question
-    }
-}*/
+
+
 
 
 
  
 
-// When all questions are answered the timer reaches 0 then the game is over
-/* if (All questions are answered OR Timer reaches 0) {
-    game over then I can save my initials and score 
-    print "your final score is...timeleft"
+/*
       if(input not letters) {
         print "input not recognized"
       } else {
