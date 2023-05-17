@@ -59,7 +59,7 @@ var highScores = [];
                 //through the event you can find the clicked answer and compare it with the correct one
                 //if its correct add time
                 //if its incorecctt decrease time
-            if(event.target === firstQuestionAnswers[2].textContent) {
+            if(event.target.textContent === firstQuestionAnswers[2]) {
                 answerResult = "Correct!"
                 secondQuestion();
             } else {
@@ -93,8 +93,17 @@ var highScores = [];
             answers.textContent = secondQuestionAnswers[i];
             answers.setAttribute("class", "question-buttons");
 
-            answers.addEventListener('click', function (){
-                thirdQuestion();
+            answers.addEventListener('click', function (event){
+                if(event.target.textContent === secondQuestionAnswers[2]) {
+                    answerResult = "Correct!"
+                    thirdQuestion();
+                } else {
+                    answerResult = "Wrong!"
+                    timerCount = timerCount - 10;
+                    thirdQuestion();
+                };
+                 
+                
             });
 
             questionSection.appendChild(answers);
@@ -114,8 +123,15 @@ var highScores = [];
             answers.textContent = thirdQuestionAnswers[i];
             answers.setAttribute("class", "question-buttons");
 
-            answers.addEventListener('click', function (){
-                fourthQuestion();
+            answers.addEventListener('click', function (event){
+                if(event.target.textContent === thirdQuestionAnswers[3]) {
+                    answerResult = "Correct!"
+                    fourthQuestion();
+                } else {
+                    answerResult = "Wrong!"
+                    timerCount = timerCount - 10;
+                    fourthQuestion();
+                };               
             });
 
             questionSection.appendChild(answers);
@@ -136,8 +152,16 @@ var highScores = [];
             answers.textContent = fourthQuestionAnswers[i];
             answers.setAttribute("class", "question-buttons");
 
-            answers.addEventListener('click', function (){
-                lastQuestion();
+            answers.addEventListener('click', function (event){
+                if(event.target.textContent === fourthQuestionAnswers[2]) {
+                    answerResult = "Correct!"
+                    lastQuestion();
+                } else {
+                    answerResult = "Wrong!"
+                    timerCount = timerCount - 10;
+                    lastQuestion();
+                };
+                
             });
 
             questionSection.appendChild(answers);
@@ -157,8 +181,15 @@ var highScores = [];
             answers.textContent = lastQuestionAnswers[i];
             answers.setAttribute("class", "question-buttons");
 
-            answers.addEventListener('click', function (){
-                gameOver();
+            answers.addEventListener('click', function (event){
+                if(event.target.textContent === lastQuestionAnswers[3]) {
+                    answerResult = "Correct!"
+                    gameOver();
+                } else {
+                    answerResult = "Wrong!"
+                    timerCount = timerCount - 10;
+                    gameOver();
+                };
             });
 
             questionSection.appendChild(answers);
@@ -167,7 +198,9 @@ var highScores = [];
 
     function gameOver(){
         // timer stops, once all questions are answered
+
         clearInterval(timer);
+       
         // save timerCount as final savedScore and parse it
         localStorage.setItem("timerCount", JSON.stringify(timerCount));
         var savedScore = JSON.parse(localStorage.getItem("timerCount"));
@@ -204,9 +237,11 @@ var highScores = [];
         submitButton.textContent = "Submit";
         submitButton.setAttribute("class", "submit-button");
         finalForm.appendChild(submitButton);
-        
+          
 
     };
+
+    
 
 
     function renderHighScores(){
