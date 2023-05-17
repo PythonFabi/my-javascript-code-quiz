@@ -23,6 +23,7 @@
     <script>
         var highScoresList = document.getElementById("high-scores");
         var highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+        var clearHighScores = document.querySelector(".start-button");
 
         highScores.forEach(function (score) {
             var listItem = document.createElement("li");
@@ -30,6 +31,10 @@
             listItem.textContent = score.initials + " - " + score.score;
             highScoresList.appendChild(listItem);
         });
+
+        function deleteHighScores()
+
+
     </script>
     
 

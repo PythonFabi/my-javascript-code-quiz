@@ -266,8 +266,12 @@ var highScores = [];
 
         submitButton.addEventListener("click", function (event) {
             event.preventDefault();
-            var initials = userInput.value;
+            var initials = userInput.value.trim();
+            if (initialsTest(initials)){
             saveHighscore(initials, savedScore);
+        } else {
+            alert("Nope! Invalid initials. Please enter two letters only!")
+        }
         });
 
         rightOrWrong();
@@ -292,6 +296,9 @@ var highScores = [];
 
     function saveHighscore(initials, score) {
         var highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+
+        initials = initials.toUpperCase();
+
         var newScore = {
             initials: initials,
             score: score,
@@ -300,6 +307,11 @@ var highScores = [];
         localStorage.setItem("highScores", JSON.stringify(highScores));
         location.href = "./assets/highscores.html";
     };
+
+    function initialsTest(initials) {
+        var allowedInitials = /^[A-Za-z]{2}$/;
+        return allowedInitials.test(initials);
+    }
     
 
 
