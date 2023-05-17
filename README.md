@@ -11,8 +11,7 @@ Here is a link to the Code Quiz: [Link to Code Quiz](https://pythonfabi.github.i
 ## Usage
 To start the Quiz, you can simply press the "Start quiz"-button:
 
-![start-quiz](https://github.com/PythonFabi/my-javascript-code-quiz/assets/129299589/60f8f42f-f703-4a21-9336-60a6746797ca)
-
+![start-quiz](https://github.com/PythonFabi/my-javascript-code-quiz/assets/129299589/8a97e082-8e12-401c-82dd-79d6a24c479b)
 
 On the top right, you will see a timer of 75 seconds starting - This is the time you will have to answer all the questions.
 
@@ -26,10 +25,7 @@ On the top left, you can see a link to the view high scores page, which will all
 
 First, you are presented with the first question and four answer possibilities. All questions follow the same scheme.
 
-
-![question-and-answers](https://github.com/PythonFabi/my-javascript-code-quiz/assets/129299589/f28fb8b5-91d2-4f70-b870-4f84fcaafb8a)
-
-
+![question-and-answers](https://github.com/PythonFabi/my-javascript-code-quiz/assets/129299589/5be75b06-5a67-45eb-a07e-3482beb545d9)
 
 If you click on one of the answers you are directed to the next question and under the answer you will see, if you answered "Correct!" or "Wrong!".
 
@@ -41,7 +37,7 @@ Warning! Each time you answer a question incorrectly, 10 seconds of the timer wi
 
 After you answered all the questions, you see a form and your final score. 
 
-![initials-and-score](https://github.com/PythonFabi/my-javascript-code-quiz/assets/129299589/2a0201af-b3b1-4d42-b630-87fb8d858724)
+![initials-and-score](https://github.com/PythonFabi/my-javascript-code-quiz/assets/129299589/339cc35a-6363-469f-b89f-2c38559bff7b)
 
 You can submit your initials and will land on the highscore page, which will show a list of your saved scores and your Initials next to them.
 
